@@ -26,7 +26,6 @@ services:
     restart: unless-stopped
     volumes:
       - mariadb-data:/var/lib/mysql:rw
-      - ./init-sql:/docker-entrypoint-initdb.d:rw
     environment:
       MYSQL_ROOT_PASSWORD: mariadb
       MYSQL_DATABASE: mariadb

@@ -14,13 +14,61 @@ main{
   display: grid;
   justify-content: center;
   padding: 10px;
+  text-align: center;
+}
+
+h1 {
+  padding: 0 auto;
 }
 
 .add-section{
   background-color: aliceblue;
   padding: 20px;
+  border-radius: 15px;
+ 
 }
 
-.show-to-do-section{
-
+input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 15px;
+  border-style: dotted;
 }
+
+.write-field {
+  background-color: aliceblue;
+}
+
+button {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 15px;
+  border-style: dotted;
+}
+
+button:hover {
+  background-color: rgb(78, 113, 124);
+}
+
+.task-list:hover {
+  background-color: rgb(78, 113, 124);
+}
+
+.todo-item{
+  display: flex;
+  flex-direction: row;
+  margin: 30px;
+}
+
+.article-style {
+  background-color: rgb(78, 113, 124);
+  border-radius: 15px;
+}
+
+article {
+  width: 300px;
+}
+
+
+
+
