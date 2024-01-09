@@ -18,7 +18,6 @@
         <div id="myDIV" class="header">
             <h2>My To Do List</h2>
             <form action="update.php" method="get">
-            <!-- <label>Write you task here</label> -->
             <input name="param" type="text" id="myInput" placeholder="Write you task here...">
             <input type="submit" onclick="newElement()" class="addBtn" value="ADD">
             </form>
