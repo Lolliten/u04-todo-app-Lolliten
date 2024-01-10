@@ -14,20 +14,20 @@
 <body>
 
     <main class="main-section">
-
-        <div id="myDIV" class="header">
+    <div>
+       
+    </div>
+        <div id="myDIV" class="header"> <!-- count(unfinished tasks) -->
             <h2>My To Do List</h2>
-            <form action="update.php" method="get">
+            <form action="create.php" method="get">
             <input name="param" type="text" id="myInput" placeholder="Write you task here...">
-            <input type="submit" onclick="newElement()" class="addBtn" value="ADD">
+            <input type="submit" class="addBtn" value="ADD">
             </form>
         </div>
 
-        <ul id="myUL">
-            <li class="checked"></li>
-            <li></li>
-            <li></li>
-        </ul>
+         <!-- ABS (absolut) sql, if statement  -->
+         
+            <?php require("read.php");?>
     </main>
     <script src="javscript.js"></script>
 </body>

@@ -1,11 +1,11 @@
 <?php
 
-function create($conn)
+function create($conn, $param)
 {
     try {
 
-        $sql = "INSERT INTO todo_list(task)
-        VALUES ('Learn PHP')";
+        $sql = "INSERT INTO todo_list(task) 
+        VALUES ('Learn PHP')"; // do prepare stmt and bind data from create.php
 
         $conn->exec($sql);
 
@@ -19,13 +19,13 @@ function read($conn)
 {
     try {
 
-        $sql = "SELECT task FROM todo";
+        $sql = "SELECT task FROM todo_list";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
 
-        echo "<ul>";
+        echo "<ul id=`myUL`>";
         // Med fetchAll får vi en array av arrayer.
         // Foreach kan enkelt hämta ut alla element https://www.w3schools.com/php/php_looping_foreach.asp
         foreach ($stmt->fetchAll() as $row) {
@@ -37,19 +37,19 @@ function read($conn)
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-}
+} //if checked true add a line through into list element if not checked dont add
 
 function update($conn, $param)
 {
 
     try {
-        $sql = "UPDATE todo_list(task) WHERE task=:task"; //Hårdkodat?? Annat sätt göra på??
+        $sql = "UPDATE todo_list(task) WHERE id=:id"; //Hårdkodat?? Annat sätt göra på??
 
         $stmt = $conn->prepare($sql);
 
-        $stmt->bindParam(":task", $param) //Hårdkodat?? Annat sätt göra på??
+        $stmt->bindParam(":task", $param); //Hårdkodat?? Annat sätt göra på??
 
-        $stmt->execute();
+        $stmt->exec();
 
         echo $stmt->rowCount() . " UPDATED successfully";
     } catch (PDOException $e) {
