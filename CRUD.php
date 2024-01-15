@@ -4,50 +4,56 @@ function create($conn, $param)
 {
     try {
 
-        $sql = "INSERT INTO todo_list(task) 
-        VALUES ('Learn PHP')"; // do prepare stmt and bind data from create.php
+        $insert = $conn->prepare("INSERT INTO todo_list(task, checked)
+        VALUES (:task, :checked)"); //should value task be false??
+        $insert->bindParam(":task", $param);
+        $insert->bindParam(":checked", $param);
 
-        $conn->exec($sql);
+        $insert->execute();
 
         echo "New task created!";
     } catch (PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
-    }
+        echo $insert . "<br>" . $e->getMessage(); //displays errormessage from db_conn.php
+    } //why the $insert variable in this catch?
+            //$sql = "INSERT INTO todo_list(task, checked) 
+            //VALUES (:task, false)"; // do prepare stmt and bind data from create.php
 }
 
-function read($conn)
+function read($conn)  //Only conn or different variable?
 {
     try {
 
-        $sql = "SELECT task FROM todo_list";
+        $slct = $conn->prepare("SELECT task FROM todo_list)
+        VALUES (task)");
+        $slct->bindParam(":task", $conn);
+        $slct->execute();
 
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-
+        If/else statement?
+        //Funkar loopen? 
         echo "<ul id=`myUL`>";
         // Med fetchAll får vi en array av arrayer.
-        // Foreach kan enkelt hämta ut alla element https://www.w3schools.com/php/php_looping_foreach.asp
-        foreach ($stmt->fetchAll() as $row) {
+        // Foreach kan enkelt hämta ut alla element
+        foreach ($slct->fetchAll() as $row) {
             echo "<li>";
             print($row["task"]); //print lättare att använda när man har variabler
             echo "</li>";
-        }
-        echo "</ul>";
-    } catch (PDOException $e) {
+            echo "</ul>";
+        } //line through tasks?
+        } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
-    }
-} //if checked true add a line through into list element if not checked dont add
+        }
+    $conn = null;
+} //if checked true or false? add a line through into list element if not checked dont add tod
 
-function update($conn, $param)
+
+
+function update($conn, $param) 
 {
-
+    //where is my stmt declared??
     try {
-        $sql = "UPDATE todo_list(task) WHERE id=:id"; //Hårdkodat?? Annat sätt göra på??
+        $stmt = $conn->prepare("UPDATE todo_list(task) SET task WHERE task=:task");
 
-        $stmt = $conn->prepare($sql);
-
-        $stmt->bindParam(":task", $param); //Hårdkodat?? Annat sätt göra på??
+        $stmt->bindParam(":task", $param);
 
         $stmt->exec();
 
@@ -57,16 +63,23 @@ function update($conn, $param)
     }
 }
 
-function delete($conn){
+function delete($conn) //only conn or some other variable??
+{ 
     try {
         // sql to delete a record
-        $sql = "DELETE FROM task WHERE id=3";
+        $sql = $conn->prepare("DELETE FROM tasks WHERE userID=:userId");
     
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
+        $sql->bindParam(":userId")
+
+        $ql->execute();
     
-        echo "Person deleted successfully";
+        echo "Task deleted successfully";
+
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
     } 
+
+    $conn = null;
 }
+
+?>

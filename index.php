@@ -27,7 +27,8 @@
 
          <!-- ABS (absolut) sql, if statement  -->
          
-            <?php require("read.php");?>
+            <?php require("read.php");
+            ?>
     </main>
     <script src="javscript.js"></script>
 </body>
