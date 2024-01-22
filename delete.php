@@ -3,8 +3,9 @@
 include_once("db_conn.php");
 include_once("CRUD.php");
 
-delete($conn);
+$id = $_POST["id"];
 
+delete($conn, $id);
 
 $conn = null;
 

@@ -34,6 +34,9 @@ function read($conn)  //Only conn or different variable?
             echo "<li>";
             print($row["title"]);
             print($row["task"]); //print lättare att använda när man har variabler
+            echo "<button>EDIT</button>";
+            echo "<button ($row[`id`])>X</button>";
+            
             echo "</li>";
         }
         echo "</ul>";
@@ -42,41 +45,37 @@ function read($conn)  //Only conn or different variable?
     }
     $conn = null;
 } //if checked true or false? add a line through into list element if not checked dont add tod
-//Pass id data from sql to the delete funtction so delete the right task based on id.
+//Pass id data from slct to the delete funtction so delete the right task based on id.
 
 
-function update($conn, $param)
+function update($conn, $id, $titleData, $taskData, $checked)
 {
-    //where is my stmt declared??
     try {
-        $stmt = $conn->prepare("UPDATE todo_list(task) SET :task WHERE id=:id");
+        $stmt = $conn->prepare("UPDATE todo_list SET task=:task WHERE id=:id");
 
-        $stmt->bindParam(":id", $param);
-        $stmt->bindParam(":task");
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":task", $titleData);
 
         $stmt->exec();
 
-        echo $stmt->rowCount() . " UPDATED successfully";
     } catch (PDOException $e) {
         echo $stmt . "<br>" . $e->getMessage();
     }
 }
 
-function delete($conn) //only conn or some other variable??
+function delete($conn, $id)
 {
     try {
-        // sql to delete a record
-        $sql = $conn->prepare("DELETE FROM todo_list WHERE userID=:userId");
+       
+        $dlt = $conn->prepare("DELETE FROM todo_list WHERE id=:id");
 
-        $sql->bindParam(":userId");
+        $dlt->bindParam(":id");
 
-        $sql->execute();
+        $dlt->execute();
 
-        echo "Task deleted successfully";
     } catch (PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
+        echo $dlt . "<br>" . $e->getMessage();
     }
 
     $conn = null;
 }
-//

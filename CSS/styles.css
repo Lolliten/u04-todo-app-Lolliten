@@ -127,3 +127,7 @@ input {
 .addBtn:hover {
   background-color: #bbb;
 }
+
+#closeBTN{
+  margin-right: 50px;
+}
