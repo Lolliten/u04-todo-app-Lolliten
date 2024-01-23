@@ -34,8 +34,15 @@ function read($conn)  //Only conn or different variable?
             echo "<li>";
             print($row["title"]);
             print($row["task"]); //print lättare att använda när man har variabler
-            echo "<button>EDIT</button>";
-            echo "<button ($row[`id`])>X</button>";
+            echo "
+                <form action='edit_form.php' method='POST'>
+                    <button type='submit'>EDIT</button>
+                    </form";
+            echo "
+                <form action='delete.php' method='POST'>
+                    <button type='submit' name='id' value={$row['id']}>X</button>
+                </form>
+                ";
             
             echo "</li>";
         }
@@ -69,7 +76,7 @@ function delete($conn, $id)
        
         $dlt = $conn->prepare("DELETE FROM todo_list WHERE id=:id");
 
-        $dlt->bindParam(":id");
+        $dlt->bindParam(":id", $id);
 
         $dlt->execute();
 

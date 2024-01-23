@@ -11,7 +11,7 @@ create($conn, $titleData, $taskData);
 
  $conn = null; //avslutar connection till databas
 
- header('Location: index.php'); //Fix this
+ header('Location: index.php'); //Header right place??
 exit();
 
 

@@ -22,12 +22,13 @@
         <div id="myDIV" class="header"> <!-- count(unfinished tasks) -->
             <h2>My To Do List</h2>
             <form action="create.php" method="post">
-                <!-- TITLE in MySQL? Could it be same as task? -->
                 <input name="title" type="text" placeholder="Write your title here..." required>
                 <input name="param" type="text" id="myInput" placeholder="Write you task here..." required>
                 <input type="submit" class="addBtn" value="ADD">
             </form>
         </div>
+
+    
 
 
         <!-- EDIT button, and -->

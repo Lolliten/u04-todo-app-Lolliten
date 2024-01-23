@@ -7,6 +7,7 @@ $id = $_POST["id"];
 
 delete($conn, $id);
 
+
 $conn = null;
 
 ?>
