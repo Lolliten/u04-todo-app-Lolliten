@@ -19,7 +19,7 @@
         <div>
 
         </div>
-        <div id="myDIV" class="header"> <!-- count(unfinished tasks) -->
+        <div id="myDIV" class="header"> <!-- count(unfinished tasks)  ??-->
             <h2>My To Do List</h2>
             <form action="create.php" method="post">
                 <input name="title" type="text" placeholder="Write your title here..." required>

@@ -10,4 +10,7 @@ delete($conn, $id);
 
 $conn = null;
 
+header('Location: index.php');
+exit();
+
 ?>

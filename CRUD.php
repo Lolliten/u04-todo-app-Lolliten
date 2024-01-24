@@ -1,5 +1,7 @@
 <?php
 
+use LDAP\Result;
+
 function create($conn, $titleData, $param)
 {
     try {
@@ -25,8 +27,6 @@ function read($conn)  //Only conn or different variable?
 
         $slct->execute();
 
-
-        //Varför echo innan loop? If/else statement? 
         echo "<ul id=`myUL`>";
         // Med fetchAll får vi en array av arrayer.
         // Foreach kan enkelt hämta ut alla element
@@ -53,6 +53,44 @@ function read($conn)  //Only conn or different variable?
     $conn = null;
 } //if checked true or false? add a line through into list element if not checked dont add tod
 //Pass id data from slct to the delete funtction so delete the right task based on id.
+
+function readById($conn, $id)  //Only conn or different variable?
+{
+    try {
+
+        $slct = $conn->prepare("SELECT title, task FROM todo_list WHERE id=:id");
+
+        $slct->bindParam(":id", $id);
+
+        $slct->execute();
+
+        $result = $slct->fetchAll();
+        return $result;
+        //Varför echo innan loop? If/else statement? 
+        //echo "<ul id=`myUL`>";
+        // Med fetchAll får vi en array av arrayer.
+        // Foreach kan enkelt hämta ut alla element
+        //foreach ($slct->fetchAll() as $row) {
+        //     echo "<li>";
+        //     print($row["title"]);
+        //     print($row["task"]);
+        //         <form action='edit_form.php' method='POST'>
+        //             <button type='submit'>EDIT</button>
+        //             </form";
+        //     echo "
+        //         <form action='delete.php' method='POST'>
+        //             <button type='submit' name='id' value={$row['id']}>X</button>
+        //         </form>
+        //         ";
+            
+        //     echo "</li>";
+        // }
+        // echo "</ul>";
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+    $conn = null;
+}
 
 
 function update($conn, $id, $titleData, $taskData, $checked)
