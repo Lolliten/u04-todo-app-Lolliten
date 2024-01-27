@@ -9,15 +9,6 @@ body{
   background-color: #31665dd3;
 }
 
-main{
-  /* margin-top: 50px;
-  display: grid;
-  justify-content: center;
-  padding: 10px;
-  text-align: center; */
-}
-
-/* Remove margins and padding from the list */
 ul {
   margin: 0;
   padding: 0;

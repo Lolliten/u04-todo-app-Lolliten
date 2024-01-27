@@ -23,6 +23,10 @@
             <form action="create.php" method="post">
                 <input name="title" type="text" placeholder="Write your title here..." required><br>
                 <input name="param" type="text" id="myInput" placeholder="Write you task here..." required>
+                <br>
+                <br/>
+                <br>
+                <br/>
                 <input type="submit" class="addBtn" value="ADD">
             </form>
         </div>

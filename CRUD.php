@@ -1,7 +1,5 @@
 <?php
 
-use LDAP\Result; // ??
-
 function create($conn, $titleData, $param)
 {
     try {
@@ -46,27 +44,20 @@ function read($conn)
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    $conn = null;
 }
-
-//if checked true or false? add a line through into list element if not checked dont add tod
 
 function readById($conn, $id)
 {
     try {
 
         $slct = $conn->prepare("SELECT title, task FROM todo_list WHERE id=:id");
-
         $slct->bindParam(":id", $id);
-
         $slct->execute();
-
         $result = $slct->fetchAll();
         return $result[0];
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    $conn = null;
 }
 
 function update($conn, $id, $titleData, $taskData)
@@ -87,15 +78,10 @@ function update($conn, $id, $titleData, $taskData)
 function delete($conn, $id)
 {
     try {
-
         $dlt = $conn->prepare("DELETE FROM todo_list WHERE id=:id");
-
         $dlt->bindParam(":id", $id);
-
         $dlt->execute();
     } catch (PDOException $e) {
         echo $dlt . "<br>" . $e->getMessage();
     }
-
-    $conn = null;
 }
