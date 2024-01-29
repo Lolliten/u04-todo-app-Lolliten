@@ -1,9 +1,10 @@
 <!-- kolla tidighare php-pdo uppgifter för skapa bra struktur och få inspo -->
 
-<!--require 'db_conn.php'; -->
+<?php error_reporting(E_ALL); ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,25 +12,28 @@
     <title>To-Do List</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    
-    <main class="main-section">
-        <h1>A to-do-list</h1>
-        <br>
-        <section class="add-section">
-            <form action="">
-                <input type="text" 
-                       name="title" 
-                       placeholder="Please fill in your task here"> <br>
-                <button type="submit">Add task &nbsp; <span>&#43;</span></button>
-            </form>
-        </section>
-        <div class="show-todo-section">
-            <input type="checkbox">
-            <h2>Tasks: </h2>
-            <small>created:</small>
-        </div>
-    </main>
 
+<body>
+    <main class="main-section">
+        <div>
+
+        </div>
+        <div id="myDIV" class="header"> <!-- count(unfinished tasks)  ??-->
+            <h2>My To Do List</h2>
+            <form action="create.php" method="post">
+                <input name="title" type="text" placeholder="Write your title here..." required><br>
+                <input name="param" type="text" id="myInput" placeholder="Write you task here..." required>
+                <br>
+                <br/>
+                <br>
+                <br/>
+                <input type="submit" class="addBtn" value="ADD">
+            </form>
+        </div>
+        <?php require("read.php");
+        ?>
+    </main>
+    <script src="javscript.js"></script>
 </body>
+
 </html>

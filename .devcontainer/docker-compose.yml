@@ -25,8 +25,7 @@ services:
     image: mariadb:10.4
     restart: unless-stopped
     volumes:
-      - mariadb-data:/var/lib/mysql:rw
-      - ./init-sql:/docker-entrypoint-initdb.d:rw
+      - mariadb-data:/var/lib/mysql:rw # .init-sql:docker entrypoint
     environment:
       MYSQL_ROOT_PASSWORD: mariadb
       MYSQL_DATABASE: mariadb

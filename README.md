@@ -2,5 +2,5 @@
 
 - Börjar skriva html koden för bas layoten.
 - Styla
-- Jobba i SQL 
-- I egen php-fil skriv funktionerna, connecta med index-filen
+- CRUD connecta till SQL 
+

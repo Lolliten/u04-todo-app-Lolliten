@@ -1,7 +1,56 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
     box-sizing: border-box;
-}
+  }/*# sourceMappingURL=styles.css.map */
+  
+  body{
+    $color-blue: rgb(78, 113, 124);
+  }
+  
+  main{
+    margin-top: 50px;
+    display: grid;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  h1 {
+    padding: 0 auto;
+  }
+  
+  .add-section{
+    background-color: green;
+    padding: 20px;
+    border-radius: 15px;
+  }
+  
+  input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 15px;
+    border-style: dotted;
+  }
+  
+  input:hover {
+    color: $color-blue
+  }
+  
+  .todo-item{
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+  }
 
+  .h3-style {
+    background-color: aliceblue;
+    border: 2px;
+    border-style: dotted;
+  }
+
+  #closeBTN{
+    margin-right: 50px;
+  }
+  
